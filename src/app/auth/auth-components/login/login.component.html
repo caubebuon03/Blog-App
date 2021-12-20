@@ -1,0 +1,46 @@
+<app-preloader *ngIf="isLoading"></app-preloader>
+
+<div *ngIf="!isLoading">
+  <div class="my-login" style="margin-top: 50px">
+    <div class="container">
+      <div class="form-container sign-in-container">
+        <!-- onLogin() run when click submit button -->
+        <form #formLogin="ngForm" (submit)="onLogin(formLogin.value)">
+          <h1>Sign in</h1>
+          <span
+            ><a class="link-sign" routerLink="/auth/sign-up"
+              >Don't have an account?</a
+            ></span
+          >
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            ngModel
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            ngModel
+            required
+          />
+          <button type="submit" [disabled]="formLogin.invalid">Sign in</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1 class="text-light">Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp" routerLink="/auth/sign-up">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
